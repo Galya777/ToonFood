@@ -1,0 +1,237 @@
+/* CSS Document */
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Bree+Serif);
+
+body {
+  background: #7416b3; 
+  font-size:22px;
+  line-height: 32px;
+  color: #ffffff;
+  word-wrap:break-word !important;
+  font-family: 'Open Sans', sans-serif;
+  }
+  #title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 2rem;
+  }
+  
+  #title img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  #title .text {
+    display: block; /* ensures vertical layout */
+  }
+  
+  #title .text h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: #fcf5f5;
+  }
+  
+  #title .text p {
+    font-size: 1.25rem;
+    color: #f0efef;
+  }
+  
+  .user-icons {
+    position: absolute;
+    top: 100px;
+    right: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    z-index: 1000;
+  }
+ 
+  
+  
+  .top-icons a,
+  .bottom-icon a {
+    text-decoration: none;
+    font-size: 2.5rem;
+    margin: 50px;
+    transition: color 0.2s ease;
+    box-shadow: 0 2px 5px rgba(235, 12, 198, 0.2);
+    background: #f07abb;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  .user-icons a:hover {
+    background-color: deeppink;
+    transform: scale(1.1);
+  }
+
+  
+  
+#container {
+  margin: 0 auto;
+}
+
+p {
+  text-align: center;
+}
+nav {
+  margin: 0; /* Remove top margin so it's right below the title */
+  background-color: #f07abb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  flex-wrap: wrap;
+}
+
+/* Ensure nav ul fills available space */
+nav ul {
+  list-style: none;
+  display: flex;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  position: relative;
+  background-color: #f07abb;
+}
+
+nav a {
+  display: block;
+  padding: 0 60px;
+  color: #FFF;
+  font-size: 20px;
+  line-height: 60px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background-color: #700d97;
+}
+
+/* Dropdown styling unchanged */
+nav ul ul {
+  display: none;
+  position: absolute;
+  top: 60px;
+}
+nav ul li:hover > ul {
+  display: inherit;
+}
+nav ul ul li {
+  width: 280px;
+  float: none;
+  display: list-item;
+  position: relative;
+}
+nav ul ul ul li {
+  position: relative;
+  top: -50px;
+  left: 130px;
+}
+
+/* Include search in nav bar layout */
+.searchBox {
+  position: relative;
+  background: #ee4eb9;
+  height: 40px;
+  border-radius: 40px;
+  right: 10%;
+}
+
+.searchBox:hover > .searchInput {
+  width: 240px;
+  padding: 0 6px;
+}
+
+.searchBox:hover > .searchButton {
+  background: white;
+  color: #bb3be2;
+}
+
+.searchButton {
+  color: rgb(161, 20, 126);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #b21cd8;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+
+.searchInput {
+  border: none;
+  background: none;
+  outline: none;
+  padding: 0;
+  color: white;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 0px;
+}
+
+/* Responsive tweak unchanged */
+@media screen and (max-width: 620px) {
+  .searchBox:hover > .searchInput {
+    width: 150px;
+    padding: 0 6px;
+  }
+}
+
+.cart-count {
+  position: relative;
+  top: -20px;
+  left: -10px;
+  background-color: rgb(255, 0, 149);
+  color: white;
+  border-radius: 50%;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.vertical-menu-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #fbd2e3;
+  padding: 20px;
+  width: 220px;
+  margin: 30px auto 20px 40px; /* отстояние от ляво и от навигационната лента */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(240, 122, 187, 0.2);
+}
+
+.vertical-menu-categories button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #f07abb;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 14px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  width: 100%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.vertical-menu-categories button:hover {
+  background-color: #ec5b9c;
+}
+
+.vertical-menu-categories i {
+  font-size: 16px;
+}

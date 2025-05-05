@@ -11,7 +11,7 @@ const Home =()=>{
   };
     return(
         <>
-           <div className="main-section">
+          
 
            <div className="slider-wrapper">
   <Slider {...settings}>
@@ -23,7 +23,7 @@ const Home =()=>{
   </Slider>
 </div>
 
-
+ <div className="main-section">
 <div className="vertical-menu-categories">
   <button><i className="fas fa-utensils"></i> Appetizers</button>
   <button><i className="fas fa-egg"></i> Breakfast</button>
@@ -36,9 +36,42 @@ const Home =()=>{
   <button><i className="fas fa-ellipsis-h"></i> Other Stuff</button>
 </div>
 
+<div className="popular-products">
+    <h2>Popular Products</h2>
+    {/* Map through product data here */}
+    <div className="product-card">Toon Burger</div>
+    <div className="product-card">Krusty Krab Pizza</div>
+    <div className="product-card">Butterbeer</div>
+  </div>
 
+  <div className="ads-section">
+    <h2>Sponsored</h2>
+    <img src="/ads/ad1.jpg" alt="Ad 1" />
+    <img src="/ads/ad2.jpg" alt="Ad 2" />
+  </div>
 
 </div>
+<div className="featured-restaurants">
+  <h2>Featured Restaurants</h2>
+  <div className="restaurant-buttons">
+    <button className="restaurant-card">
+      <img src="/restaurants/krusty-krab.jpg" alt="Krusty Krab" />
+      <span>Krusty Krab</span>
+    </button>
+    <button className="restaurant-card">
+      <img src="/restaurants/mos-eisley.jpg" alt="Mos Eisley Cantina" />
+      <span>Mos Eisley Cantina</span>
+    </button>
+    <button className="restaurant-card">
+      <img src="/restaurants/central-perk.jpg" alt="Central Perk" />
+      <span>Central Perk</span>
+    </button>
+  </div>
+</div>
+
+<footer className="site-footer">
+  <p>&copy; 2025 Fictional Foods. All rights reserved.</p>
+</footer>
 
         </>
     )

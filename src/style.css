@@ -235,3 +235,23 @@ nav ul ul ul li {
 .vertical-menu-categories i {
   font-size: 16px;
 }
+
+.slider-wrapper {
+  padding: 10px;
+  flex-grow: 1;
+  max-width: 7000px;
+  display: auto;
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically if needed */
+}
+
+.slider-wrapper img {
+  width: 100%;
+  height: 300px;
+  transform: scale(0.9); /* Adjust this as needed */
+  transform-origin: center;
+  border-radius: 8px;
+}
+
+
+

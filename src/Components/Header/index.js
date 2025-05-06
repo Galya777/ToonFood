@@ -1,5 +1,5 @@
 import React from "react";
-import Home from "../../Pages/Home";
+
 const Header =()=>{
     return(
     <>
@@ -39,16 +39,20 @@ const Header =()=>{
             <li><a href="./src/Pages/Home/index.js">Home</a></li>
 
             <li>
-              <a >Restaurants</a>
+              <a >Places</a>
               <ul>
-                <li><a href="#">Krusty Krab</a></li>
-                <li><a href="#">Krusty Burger</a></li>
-                <li><a href="#">Tom and Jerry</a></li>
-                <li><a href="#">Amphibia</a></li>
-                <li><a href="#">Timi's mother</a></li>
-                <li><a href="#">Disney</a></li>
-                <li><a href="#">Anime</a></li>
-                <li><a href="#">Nick</a></li>
+           
+                <li><a href="#"><i class="fas fa-hamburger"></i> Krusty Krab</a></li>
+  <li><a href="#"><i class="fas fa-store"></i> Bob's Burgers</a></li>
+  <li><a href="#"><i class="fas fa-beer"></i> The Simpsons</a></li>
+  <li><a href="#"><i class="fas fa-cat"></i> Tom and Jerry</a></li>
+  <li><a href="#"><i class="fas fa-frog"></i> Amphibia</a></li>
+  <li><a href="#"><i class="fas fa-user-nurse"></i> Timi's Mother</a></li>
+  <li><a href="#"><i class="fas fa-chess-rook"></i> Disney</a></li>
+  <li><a href="#"><i class="fas fa-dragon"></i> Anime</a></li>
+  <li><a href="#"><i class="fas fa-tv"></i> Nicktoons</a></li>
+
+
               </ul>
             </li>
 
@@ -82,7 +86,6 @@ const Header =()=>{
 
     </nav>
       </div>
-      <Home />
    
         </>
     )

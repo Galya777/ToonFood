@@ -1,4 +1,5 @@
 import Slider from "react-slick";
+import PopularProducts from "../../Components/Popular Products";
 
 
 const Home =()=>{
@@ -23,58 +24,79 @@ const Home =()=>{
   </Slider>
 </div>
 
- <div className="main-section">
-<div className="vertical-menu-categories">
-  <button><i className="fas fa-utensils"></i> Appetizers</button>
-  <button><i className="fas fa-egg"></i> Breakfast</button>
-  <button><i className="fas fa-hamburger"></i> Fast food</button>
-  <button><i className="fas fa-leaf"></i> Salads</button>
-  <button><i className="fas fa-mug-hot"></i> Soups</button>
-  <button><i className="fas fa-drumstick-bite"></i> Dishes</button>
-  <button><i className="fas fa-ice-cream"></i> Desserts</button>
-  <button><i className="fas fa-coffee"></i> Drinks</button>
-  <button><i className="fas fa-ellipsis-h"></i> Other Stuff</button>
-</div>
-
-<div className="popular-products">
-    <h2>Popular Products</h2>
-    {/* Map through product data here */}
-    <div className="product-card">Toon Burger</div>
-    <div className="product-card">Krusty Krab Pizza</div>
-    <div className="product-card">Butterbeer</div>
+<div className="main-content-wrapper">
+  <div className="vertical-menu-categories">
+    <button><i className="fas fa-utensils"></i> Appetizers</button>
+    <button><i className="fas fa-egg"></i> Breakfast</button>
+    <button><i className="fas fa-hamburger"></i> Fast food</button>
+    <button><i className="fas fa-leaf"></i> Salads</button>
+    <button><i className="fas fa-mug-hot"></i> Soups</button>
+    <button><i className="fas fa-drumstick-bite"></i> Dishes</button>
+    <button><i className="fas fa-ice-cream"></i> Desserts</button>
+    <button><i className="fas fa-coffee"></i> Drinks</button>
+    <button><i className="fas fa-ellipsis-h"></i> Other Stuff</button>
   </div>
+
+
+
+<PopularProducts />
 
   <div className="ads-section">
     <h2>Sponsored</h2>
     <img src="/ads/ad1.jpg" alt="Ad 1" />
     <img src="/ads/ad2.jpg" alt="Ad 2" />
   </div>
-
 </div>
+
 <div className="featured-restaurants">
   <h2>Featured Restaurants</h2>
   <div className="restaurant-buttons">
     <button className="restaurant-card">
-      <img src="/restaurants/krusty-krab.jpg" alt="Krusty Krab" />
+      <img src="/images/krusty-krab.jpg" alt="Krusty Krab" />
       <span>Krusty Krab</span>
     </button>
     <button className="restaurant-card">
-      <img src="/restaurants/mos-eisley.jpg" alt="Mos Eisley Cantina" />
-      <span>Mos Eisley Cantina</span>
+      <img src="/images/krusty-burger.jpg" alt="Krusty Burger" />
+      <span>Krusty Burger</span>
     </button>
     <button className="restaurant-card">
-      <img src="/restaurants/central-perk.jpg" alt="Central Perk" />
-      <span>Central Perk</span>
+      <img src="/images/frying-dutchman.jpg" alt="The Frying Dutchman" />
+      <span>The Frying Dutchman</span>
+    </button>
+    <button className="restaurant-card">
+      <img src="/images/pizza-planet.jpg" alt="Pizza Planet" />
+      <span>Pizza Planet</span>
+    </button>
+    <button className="restaurant-card">
+      <img src="/images/moes-tavern.jpg" alt="Moe’s Tavern" />
+      <span>Moe’s Tavern</span>
+    </button>
+    <button className="restaurant-card">
+      <img src="/images/chokey-chicken.jpg" alt="Chokey Chicken" />
+      <span>Chokey Chicken</span>
+    </button>
+    <button className="restaurant-card">
+      <img src="/images/drunken-clam.jpg" alt="The Drunken Clam" />
+      <span>The Drunken Clam</span>
+    </button>
+    <button className="restaurant-card">
+      <img src="/images/bobs-burgers.jpg" alt="Bob's Burgers" />
+      <span>Bob's Burgers</span>
+    </button>
+    <button className="restaurant-card">
+      <img src="/images/gusteaus-restaurant.jpg" alt="Gusteau’s Restaurant" />
+      <span>Gusteau’s Restaurant</span>
     </button>
   </div>
 </div>
 
-<footer className="site-footer">
-  <p>&copy; 2025 Fictional Foods. All rights reserved.</p>
-</footer>
+
+
+
 
         </>
     )
 }
 
 export default Home;
+

@@ -11,13 +11,7 @@ const Home =()=>{
     slidesToScroll: 1
   };
 
-  useEffect(() => {
-    fetch('http://localhost:3001/api/products')
-      .then(res => res.json())
-      .then(data => setProducts(data))
-      .catch(err => console.error(err));
-  }, []);
-  
+ 
     return(
         <>
           

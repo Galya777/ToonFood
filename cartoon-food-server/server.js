@@ -1,3 +1,7 @@
+require('dotenv').config();
+
+const mongoose = require('mongoose');
+
 const express = require('express');
 const cors = require('cors');
 const path = require('path'); // за работа със статични файлове
@@ -6,7 +10,23 @@ const app = express();
 // Потребителски CORS настройки
 app.use(cors());
 app.use(express.json());
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('🟢 Свързано с MongoDB!'))
+  .catch((err) => console.error('🔴 Грешка при връзка с MongoDB:', err));
 
+
+// Модел за продукт (Schema)
+const productSchema = new mongoose.Schema({
+  name: String,
+  price: Number,
+  image: String,
+  description: String,
+  rating: Number,
+  restaurant: String,
+  categories: [String],
+});
+
+const Product = mongoose.model('Product', productSchema);
 // Статични файлове (например HTML, CSS, JS)
 app.use(express.static(path.join(__dirname, 'public'))); // Папката 'public' съдържа HTML файловете
 
@@ -110,22 +130,23 @@ let products = [
 ];
 
 // GET заявка за връщане на всички продукти
-app.get('/api/products', (req, res) => {
+app.get('/api/products', async (req, res) => {
+  const products = await Product.find();
   res.json(products);
 });
 
+
 // POST заявка за добавяне на нов продукт
-app.post('/api/products', (req, res) => {
-  const newProduct = req.body;
-
-  if (!newProduct.name || !newProduct.price || !newProduct.image || !newProduct.description) {
-    return res.status(400).json({ error: 'Продуктът трябва да съдържа име, цена, изображение и описание.' });
+app.post('/api/products', async (req, res) => {
+  try {
+    const newProduct = new Product(req.body);
+    const saved = await newProduct.save();
+    res.status(201).json(saved);
+  } catch (err) {
+    res.status(400).json({ error: 'Невалидни данни' });
   }
-
-  newProduct.id = products.length + 1; // Генериране на ID
-  products.push(newProduct);
-  res.status(201).json(newProduct); // Връщаме новия продукт
 });
+
 
 // Път за главната страница (ако искаш да връщаш HTML файл)
 app.get('/', (req, res) => {

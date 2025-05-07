@@ -8,13 +8,14 @@ const PopularProducts = () => {
   const [showModal, setShowModal] = useState(false);
   const [products, setProducts] = useState([]);
 
-  // Зареждане на продуктите от бекенда
+  // Зареждане на продуктите от базата
   useEffect(() => {
-    fetch('http://localhost:3001/api/products')
+    fetch('http://localhost:3001/api/products') 
       .then(res => res.json())
       .then(data => setProducts(data))
       .catch(err => console.error('Грешка при зареждане на продукти:', err));
   }, []);
+  
 
   const handleCardClick = (product) => {
     setSelectedProduct(product);
@@ -77,7 +78,7 @@ const PopularProducts = () => {
             </div>
             <div className="product-info">
               <span className="product-name">{product.name}</span>
-              <span className="product-price">{product.price}</span>
+              <span className="product-price">$ {product.price}</span>
             </div>
             <div className="product-rating">
               {[...Array(5)].map((_, i) => (
@@ -102,7 +103,7 @@ const PopularProducts = () => {
             <img src={selectedProduct.image} alt={selectedProduct.name} />
             <h3>{selectedProduct.name}</h3>
             <p>{selectedProduct.description}</p>
-            <p className="product-price">{selectedProduct.price}</p>
+            <p className="product-price">{selectedProduct.price}$</p>
             <div className="product-rating">
               {[...Array(5)].map((_, i) => (
                 <i

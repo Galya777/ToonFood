@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const Header =()=>{
     return(
@@ -36,13 +37,13 @@ const Header =()=>{
         <div id="container">
         <nav>
           <ul>
-            <li><a href="./src/Pages/Home/index.js">Home</a></li>
+            <li><a href="/">Home</a></li>
 
             <li>
               <a >Places</a>
               <ul>
            
-                <li><a href="#"><i class="fas fa-hamburger"></i> Krusty Krab</a></li>
+                <li><Link to="/restaurant/Krusty%20Krab"><i class="fas fa-hamburger"></i> Krusty Krab</Link></li>
   <li><a href="#"><i class="fas fa-store"></i> Bob's Burgers</a></li>
   <li><a href="#"><i class="fas fa-beer"></i> The Simpsons</a></li>
   <li><a href="#"><i class="fas fa-cat"></i> Tom and Jerry</a></li>

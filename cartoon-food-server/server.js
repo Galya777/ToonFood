@@ -61,11 +61,24 @@ app.get('/api/products/restaurant/:name', async (req, res) => {
 // Продукти по категория
 app.get('/api/products/categories/:name', async (req, res) => {
   const { name } = req.params;
+
   try {
-    const products = await Product.find({ categories: name });
+    let products;
+
+    if (name.toLowerCase() === 'other') {
+      // Find products with no categories or empty category arrays
+      products = await Product.find({
+        $or: [
+          { categories: { $exists: false } },
+          { categories: { $size: 0 } },
+        ]
+      });
+    } else {
+      products = await Product.find({ categories: name });
+    }
 
     if (products.length === 0) {
-      return res.status(404).json({ message: `Няма продукти!.` });
+      return res.status(404).json({ message: 'Няма продукти!' });
     }
 
     res.json(products);
@@ -73,6 +86,7 @@ app.get('/api/products/categories/:name', async (req, res) => {
     res.status(500).json({ error: 'Грешка при търсене на продукти.' });
   }
 });
+
 
 
 

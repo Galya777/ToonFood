@@ -44,14 +44,14 @@ const Header =()=>{
               <ul>
            
                 <li><Link to="/restaurant/Krusty%20Krab"><i class="fas fa-hamburger"></i> Krusty Krab</Link></li>
-  <li><a href="#"><i class="fas fa-store"></i> Bob's Burgers</a></li>
-  <li><a href="#"><i class="fas fa-beer"></i> The Simpsons</a></li>
-  <li><a href="#"><i class="fas fa-cat"></i> Tom and Jerry</a></li>
-  <li><a href="#"><i class="fas fa-frog"></i> Amphibia</a></li>
-  <li><a href="#"><i class="fas fa-user-nurse"></i> Timi's Mother</a></li>
-  <li><a href="#"><i class="fas fa-chess-rook"></i> Disney</a></li>
-  <li><a href="#"><i class="fas fa-dragon"></i> Anime</a></li>
-  <li><a href="#"><i class="fas fa-tv"></i> Nicktoons</a></li>
+  <li><Link to="/restaurant/Bob's%20Burgers"><i class="fas fa-store"></i> Bob's Burgers</Link></li>
+  <li><Link to="/restaurant/The%20Simpsons"><i class="fas fa-beer"></i> The Simpsons</Link></li>
+  <li><Link to="/restaurant/Tom%20and%20Jerry"><i class="fas fa-cat"></i> Tom and Jerry</Link></li>
+  <li><Link to="/restaurant/Amphibia"><i class="fas fa-frog"></i> Amphibia</Link></li>
+  <li><Link to="/restaurant/Timi's%20KMother"><i class="fas fa-user-nurse"></i> Timi's Mother</Link></li>
+  <li><Link to="/restaurant/Disney"><i class="fas fa-chess-rook"></i> Disney</Link></li>
+  <li><Link to="/restaurant/Anime"><i class="fas fa-dragon"></i> Anime</Link></li>
+  <li><Link to="/restaurant/Nicktoons"><i class="fas fa-tv"></i> Nicktoons</Link></li>
 
 
               </ul>
@@ -60,15 +60,15 @@ const Header =()=>{
             <li>
               <a >Menu</a>
               <ul>
-              <li><a href="#"><i class="fas fa-utensils"></i> Appetizers</a></li>
-  <li><a href="#"><i class="fas fa-egg"></i> Breakfast</a></li>
-  <li><a href="#"><i class="fas fa-hamburger"></i> Fast food</a></li>
-  <li><a href="#"><i class="fas fa-leaf"></i> Salads</a></li>
-  <li><a href="#"><i class="fas fa-mug-hot"></i> Soups</a></li>
-  <li><a href="#"><i class="fas fa-drumstick-bite"></i> Dishes</a></li>
-  <li><a href="#"><i class="fas fa-ice-cream"></i> Desserts</a></li>
-  <li><a href="#"><i class="fas fa-coffee"></i> Drinks</a></li>
-  <li><a href="#"><i class="fas fa-ellipsis-h"></i> Other Stuff</a></li>
+              <li><Link to="/categories/appetizers"><i class="fas fa-utensils"></i> Appetizers</Link></li>
+  <li><Link to="/categories/breakfast"><i class="fas fa-egg"></i> Breakfast</Link></li>
+  <li><Link to="/categories/fast%20food"><i class="fas fa-hamburger"></i> Fast food</Link></li>
+  <li><Link to="/categories/salads"><i class="fas fa-leaf"></i> Salads</Link></li>
+  <li><Link to="/categories/soups"><i class="fas fa-mug-hot"></i> Soups</Link></li>
+  <li><Link to="/categories/dishes"><i class="fas fa-drumstick-bite"></i> Dishes</Link></li>
+  <li><Link to="/categories/desserts"><i class="fas fa-ice-cream"></i> Desserts</Link></li>
+  <li><Link to="/categories/drinks"><i class="fas fa-coffee"></i> Drinks</Link></li>
+  <li><Link to="/categories/other"><i class="fas fa-ellipsis-h"></i> Other Stuff</Link></li>
               </ul>
             </li>
 

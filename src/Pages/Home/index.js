@@ -1,6 +1,6 @@
 import Slider from "react-slick";
 import PopularProducts from "../../Components/Popular Products";
-
+import { Link } from 'react-router-dom';
 
 const Home =()=>{
   var settings = {
@@ -27,17 +27,35 @@ const Home =()=>{
 </div>
 
 <div className="main-content-wrapper">
-  <div className="vertical-menu-categories">
-    <button><i className="fas fa-utensils"></i> Appetizers</button>
-    <button><i className="fas fa-egg"></i> Breakfast</button>
-    <button><i className="fas fa-hamburger"></i> Fast food</button>
-    <button><i className="fas fa-leaf"></i> Salads</button>
-    <button><i className="fas fa-mug-hot"></i> Soups</button>
-    <button><i className="fas fa-drumstick-bite"></i> Dishes</button>
-    <button><i className="fas fa-ice-cream"></i> Desserts</button>
-    <button><i className="fas fa-coffee"></i> Drinks</button>
-    <button><i className="fas fa-ellipsis-h"></i> Other Stuff</button>
-  </div>
+<div className="vertical-menu-categories">
+  <Link to="/categories/appetizers" className="menu-link">
+    <i className="fas fa-utensils"></i> Appetizers
+  </Link>
+  <Link to="/categories/breakfast" className="menu-link">
+    <i className="fas fa-egg"></i> Breakfast
+  </Link>
+  <Link to="/categories/fast%20food" className="menu-link">
+    <i className="fas fa-hamburger"></i> Fast food
+  </Link>
+  <Link to="/categories/salads" className="menu-link">
+    <i className="fas fa-leaf"></i> Salads
+  </Link>
+  <Link to="/categories/soups" className="menu-link">
+    <i className="fas fa-mug-hot"></i> Soups
+  </Link>
+  <Link to="/categories/dishes" className="menu-link">
+    <i className="fas fa-drumstick-bite"></i> Dishes
+  </Link>
+  <Link to="/categories/desserts" className="menu-link">
+    <i className="fas fa-ice-cream"></i> Desserts
+  </Link>
+  <Link to="/categories/drinks" className="menu-link">
+    <i className="fas fa-coffee"></i> Drinks
+  </Link>
+  <Link to="/categories/other" className="menu-link">
+    <i className="fas fa-ellipsis-h"></i> Other Stuff
+  </Link>
+</div>
 
 
 

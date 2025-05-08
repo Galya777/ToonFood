@@ -60,14 +60,14 @@ const Header =()=>{
             <li>
               <a >Menu</a>
               <ul>
-              <li><Link to="/categories/appetizers"><i class="fas fa-utensils"></i> Appetizers</Link></li>
+              <li><Link to="/categories/appetizer"><i class="fas fa-utensils"></i> Appetizers</Link></li>
   <li><Link to="/categories/breakfast"><i class="fas fa-egg"></i> Breakfast</Link></li>
   <li><Link to="/categories/fast%20food"><i class="fas fa-hamburger"></i> Fast food</Link></li>
-  <li><Link to="/categories/salads"><i class="fas fa-leaf"></i> Salads</Link></li>
-  <li><Link to="/categories/soups"><i class="fas fa-mug-hot"></i> Soups</Link></li>
-  <li><Link to="/categories/dishes"><i class="fas fa-drumstick-bite"></i> Dishes</Link></li>
-  <li><Link to="/categories/desserts"><i class="fas fa-ice-cream"></i> Desserts</Link></li>
-  <li><Link to="/categories/drinks"><i class="fas fa-coffee"></i> Drinks</Link></li>
+  <li><Link to="/categories/salad"><i class="fas fa-leaf"></i> Salads</Link></li>
+  <li><Link to="/categories/soup"><i class="fas fa-mug-hot"></i> Soups</Link></li>
+  <li><Link to="/categories/dish"><i class="fas fa-drumstick-bite"></i> Dishes</Link></li>
+  <li><Link to="/categories/dessert"><i class="fas fa-ice-cream"></i> Desserts</Link></li>
+  <li><Link to="/categories/drink"><i class="fas fa-coffee"></i> Drinks</Link></li>
   <li><Link to="/categories/other"><i class="fas fa-ellipsis-h"></i> Other Stuff</Link></li>
               </ul>
             </li>

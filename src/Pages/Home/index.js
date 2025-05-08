@@ -28,7 +28,7 @@ const Home =()=>{
 
 <div className="main-content-wrapper">
 <div className="vertical-menu-categories">
-  <Link to="/categories/appetizers" className="menu-link">
+  <Link to="/categories/appetizer" className="menu-link">
     <i className="fas fa-utensils"></i> Appetizers
   </Link>
   <Link to="/categories/breakfast" className="menu-link">
@@ -37,19 +37,19 @@ const Home =()=>{
   <Link to="/categories/fast%20food" className="menu-link">
     <i className="fas fa-hamburger"></i> Fast food
   </Link>
-  <Link to="/categories/salads" className="menu-link">
+  <Link to="/categories/salad" className="menu-link">
     <i className="fas fa-leaf"></i> Salads
   </Link>
-  <Link to="/categories/soups" className="menu-link">
+  <Link to="/categories/soup" className="menu-link">
     <i className="fas fa-mug-hot"></i> Soups
   </Link>
-  <Link to="/categories/dishes" className="menu-link">
+  <Link to="/categories/dishe" className="menu-link">
     <i className="fas fa-drumstick-bite"></i> Dishes
   </Link>
-  <Link to="/categories/desserts" className="menu-link">
+  <Link to="/categories/dessert" className="menu-link">
     <i className="fas fa-ice-cream"></i> Desserts
   </Link>
-  <Link to="/categories/drinks" className="menu-link">
+  <Link to="/categories/drink" className="menu-link">
     <i className="fas fa-coffee"></i> Drinks
   </Link>
   <Link to="/categories/other" className="menu-link">

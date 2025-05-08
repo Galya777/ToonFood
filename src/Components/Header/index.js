@@ -25,9 +25,12 @@ const Header =()=>{
   <div class="top-icons">
     <a href="/login" title="Log In"><i class="fas fa-sign-in-alt"></i></a>
     <a href="/signup" title="Sign Up"><i class="fas fa-user-plus"></i></a>
-    <a href="/cart" title="Shopping Bag"><i class="fas fa-shopping-bag"></i>
-    <span className="cart-count">0</span>
-    <span className="cart-price"> $0</span></a>
+    <Link to="/cart" title="Shopping Bag">
+  <i className="fas fa-shopping-bag"></i>
+  <span className="cart-count">0</span>
+  <span className="cart-price"> $0</span>
+</Link>
+
  </div>
 </div>
 

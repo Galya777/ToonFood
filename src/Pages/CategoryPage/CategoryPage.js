@@ -7,27 +7,29 @@ const CategoryPage = () => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState('');
 
+  const API_BASE = process.env.REACT_APP_API_BASE || '';
+
   useEffect(() => {
-    fetch(`http://localhost:3001/api/products/categories/${encodeURIComponent(name)}`)
+    fetch(`${API_BASE}/api/products/categories/${encodeURIComponent(name)}`)
       .then((res) => {
         if (!res.ok) throw new Error('No products found in the category.');
         return res.json();
       })
       .then((data) => setProducts(data))
       .catch((err) => setError(err.message));
-  }, [name]);
+  }, [name, API_BASE]);
   
 
   if (error) return <p>{error}</p>;
   return (
     <div>
-    <h2>Prducts from: {name}</h2>
-    {products.length > 0 ? (
-    <ProductGrid products={products} />
-  ) : (
-    <p>{error || 'Няма продукти.'}</p>
-  )}
-</div>
+      <h2>Products in: {name}</h2>
+      {products.length > 0 ? (
+        <ProductGrid products={products} />
+      ) : (
+        <p>{error || 'No products.'}</p>
+      )}
+    </div>
   );
 };
 

@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import './PopularProducts.css';
+import { useCart } from '../../Pages/CardPage/CartContext';
 
 const PopularProducts = () => {
   const [favorites, setFavorites] = useState([]);
-  const [cart, setCart] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [products, setProducts] = useState([]);
+  const { dispatch } = useCart();
 
-  // Зареждане на продуктите от базата
+  const API_BASE = process.env.REACT_APP_API_BASE || '';
+
   useEffect(() => {
-    fetch('http://localhost:3001/api/products') 
+    fetch(`${API_BASE}/api/products`)
       .then(res => res.json())
       .then(data => setProducts(data))
-      .catch(err => console.error('Грешка при зареждане на продукти:', err));
-  }, []);
-  
+      .catch(err => console.error('Error loading products:', err));
+  }, [API_BASE]);
 
   const handleCardClick = (product) => {
     setSelectedProduct(product);
@@ -23,15 +24,20 @@ const PopularProducts = () => {
   };
 
   const toggleFavorite = (product) => {
+    const id = product._id || product.id || product.name;
     setFavorites((prev) =>
-      prev.includes(product)
-        ? prev.filter((p) => p !== product)
-        : [...prev, product]
+      prev.includes(id)
+        ? prev.filter((p) => p !== id)
+        : [...prev, id]
     );
   };
 
   const addToCart = (product) => {
-    setCart((prev) => [...prev, product]);
+    const id = product._id || product.id || product.name;
+    dispatch({
+      type: 'ADD_TO_CART',
+      payload: { id, name: product.name, price: product.price }
+    });
   };
 
   const closeModal = () => {
@@ -46,7 +52,7 @@ const PopularProducts = () => {
         {products.map((product, index) => (
           <div
             className="product-card"
-            key={index}
+            key={product._id || product.id || index}
             onClick={() => handleCardClick(product)}
           >
             <div className="product-img-wrapper">
@@ -61,7 +67,7 @@ const PopularProducts = () => {
                 >
                   <i
                     className={`fas fa-heart ${
-                      favorites.includes(product) ? 'favorited' : ''
+                      favorites.includes(product._id || product.id || product.name) ? 'favorited' : ''
                     }`}
                   ></i>
                 </button>
@@ -89,7 +95,7 @@ const PopularProducts = () => {
                   }`}
                 ></i>
               ))}
-              {product.rating % 1 !== 0 && (
+              {(product.rating || 0) % 1 !== 0 && (
                 <i className="fas fa-star-half-alt filled"></i>
               )}
             </div>
@@ -113,7 +119,7 @@ const PopularProducts = () => {
                   }`}
                 ></i>
               ))}
-              {selectedProduct.rating % 1 !== 0 && (
+              {(selectedProduct.rating || 0) % 1 !== 0 && (
                 <i className="fas fa-star-half-alt filled"></i>
               )}
             </div>

@@ -5,8 +5,8 @@ import Home from './Pages/Home';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import RestaurantPage from './Pages/RestaurantPage/RestaurantPage';
 import CategoryPage from './Pages/CategoryPage/CategoryPage';
-import CartProvider  from './Pages/CardPage/CartContext';
-import  CartPage  from './Pages/CardPage/CartPage';
+import { CartProvider } from './Pages/CardPage/CartContext';
+import CartPage from './Pages/CardPage/CartPage';
 
 function App() {
   return (

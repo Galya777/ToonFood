@@ -43,7 +43,7 @@ const Home =()=>{
   <Link to="/categories/soup" className="menu-link">
     <i className="fas fa-mug-hot"></i> Soups
   </Link>
-  <Link to="/categories/dishe" className="menu-link">
+  <Link to="/categories/dish" className="menu-link">
     <i className="fas fa-drumstick-bite"></i> Dishes
   </Link>
   <Link to="/categories/dessert" className="menu-link">

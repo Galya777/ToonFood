@@ -117,6 +117,21 @@ nav a {
 nav a:hover {
   background-color: #700d97;
 }
+/* Make dropdown trigger buttons look like nav links */
+nav button.menu-toggle {
+  display: block;
+  padding: 0 60px;
+  color: #FFF;
+  font-size: 20px;
+  line-height: 60px;
+  background: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+nav button.menu-toggle:hover {
+  background-color: #700d97;
+}
 
 /* Dropdown styling unchanged */
 nav ul ul {
@@ -126,6 +141,16 @@ nav ul ul {
 }
 nav ul li:hover > ul {
   display: inherit;
+}
+/* Open dropdowns when parent link is focused (keyboard accessibility) */
+nav ul li:focus-within > ul {
+  display: inherit;
+}
+/* Visible focus style for nav links, consistent with hover */
+nav a:focus {
+  outline: 2px solid #700d97;
+  outline-offset: 2px;
+  background-color: #700d97;
 }
 nav ul ul li {
   width: 280px;

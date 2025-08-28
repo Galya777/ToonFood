@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { useCart } from '../../Pages/CardPage/CartContext';
 
 const Header = () => {
+  const { cart } = useCart();
+  const cartCount = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+  const cartTotal = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 0)), 0);
   return (
     <>
       <div className="header">
@@ -17,7 +21,7 @@ const Header = () => {
 
       <div className="titleCard">
         <div id="title">
-          <img src="/images/mainImage.jpg" alt="Toon Food Image" />
+          <img src="/images/mainImage.jpg" alt="Toon Food" />
           <div className="text">
             <h1>Toon food</h1>
             <p>Food from your favourite world.</p>
@@ -29,8 +33,8 @@ const Header = () => {
             <a href="/signup" title="Sign Up"><i className="fas fa-user-plus"></i></a>
             <Link to="/cart" title="Shopping Bag">
               <i className="fas fa-shopping-bag"></i>
-              <span className="cart-count">0</span>
-              <span className="cart-price"> $0</span>
+              <span className="cart-count">{cartCount}</span>
+              <span className="cart-price"> ${cartTotal.toFixed(2)}</span>
             </Link>
           </div>
         </div>
@@ -49,7 +53,7 @@ const Header = () => {
                 <li><Link to="/restaurant/The%20Simpsons"><i className="fas fa-beer"></i> The Simpsons</Link></li>
                 <li><Link to="/restaurant/Tom%20and%20Jerry"><i className="fas fa-cat"></i> Tom and Jerry</Link></li>
                 <li><Link to="/restaurant/Amphibia"><i className="fas fa-frog"></i> Amphibia</Link></li>
-                <li><Link to="/restaurant/Timi's%20KMother"><i className="fas fa-user-nurse"></i> Timi's Mother</Link></li>
+                <li><Link to="/restaurant/Timi's%20Mother"><i className="fas fa-user-nurse"></i> Timi's Mother</Link></li>
                 <li><Link to="/restaurant/Disney"><i className="fas fa-chess-rook"></i> Disney</Link></li>
                 <li><Link to="/restaurant/Anime"><i className="fas fa-dragon"></i> Anime</Link></li>
                 <li><Link to="/restaurant/Nicktoons"><i className="fas fa-tv"></i> Nicktoons</Link></li>
@@ -71,10 +75,10 @@ const Header = () => {
               </ul>
             </li>
 
-            <li><a href="#">Games</a></li>
-            <li><a href="#">Help</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">About</a></li>
+            <li><Link to="/">Games</Link></li>
+            <li><Link to="/">Help</Link></li>
+            <li><Link to="/">Contact</Link></li>
+            <li><Link to="/">About</Link></li>
           </ul>
 
           <div className="searchBox">

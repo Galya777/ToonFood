@@ -74,6 +74,28 @@ const CartPage = () => {
     }
   }, [cart]);
 
+  const PASSPORT_KEY = 'toon-food-passport';
+  const [passport, setPassport] = useState(() => {
+    try {
+      const raw = localStorage.getItem(PASSPORT_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch { return []; }
+  });
+
+  useEffect(() => {
+    try {
+      const prevRaw = localStorage.getItem(PASSPORT_KEY);
+      const prev = prevRaw ? JSON.parse(prevRaw) : [];
+      const current = new Set(prev);
+      const add = (list) => { (list || []).forEach(i => { if (i && i.restaurant) current.add(i.restaurant); }); };
+      add(cart);
+      add(saved);
+      const next = Array.from(current);
+      setPassport(next);
+      localStorage.setItem(PASSPORT_KEY, JSON.stringify(next));
+    } catch {}
+  }, [cart, saved]);
+
   useEffect(() => {
     try {
       const params = new URLSearchParams(location.search);
@@ -114,6 +136,24 @@ const CartPage = () => {
   };
 
   const printPage = () => { try { window.print(); } catch {} };
+
+  const mysteryBox = () => {
+    if (!saved || saved.length === 0) { setAnnounce("No saved items for Mystery Box"); return; }
+    const count = Math.min(3, saved.length);
+    const pool = [...saved];
+    const chosen = [];
+    for (let i = 0; i < count; i++) {
+      const idx = Math.floor(Math.random() * pool.length);
+      chosen.push(pool[idx]);
+      pool.splice(idx, 1);
+    }
+    chosen.forEach(item => {
+      moveToCart(item);
+      const extra = Math.floor(Math.random() * 3);
+      for (let k = 0; k < extra; k++) dispatch({ type: "ADD_TO_CART", payload: item });
+    });
+    setAnnounce(`Mystery Box added ${chosen.length} item${chosen.length !== 1 ? 's' : ''}`);
+  };
 
 const exportSaved = () => {
     try {
@@ -186,6 +226,11 @@ const exportSaved = () => {
           <p>Estimated tax: {currency.format(estimatedTax)}</p>
           <p>Estimated total: {currency.format(estimatedTotal)}</p>
           {etaText ? <p>{etaText}</p> : null}
+          {passport && passport.length > 0 && (
+            <div>
+              <strong>Passport badges:</strong> {passport.length} universes — {passport.join(', ')}
+            </div>
+          )}
           <div>
             <label htmlFor="promo">Promo code:</label>
             <input
@@ -199,6 +244,7 @@ const exportSaved = () => {
           </div>
           <div>
             <button onClick={copyShare}>Share cart</button>
+            <button onClick={mysteryBox}>Mystery box</button>
             <button onClick={printPage}>Print</button>
             <button onClick={clearCart}>Clear cart</button>
           </div>

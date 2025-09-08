@@ -1,11 +1,77 @@
-import React from "react";
-import { Link } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from "react";
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useCart } from '../../Pages/CardPage/CartContext';
 
 const Header = () => {
   const { cart } = useCart();
   const cartCount = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
   const cartTotal = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 0)), 0);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [query, setQuery] = useState(() => {
+    try {
+      const params = new URLSearchParams(location.search);
+      return params.get('q') || '';
+    } catch {
+      return '';
+    }
+  });
+  const searchInputRef = useRef(null);
+
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(location.search);
+      setQuery(params.get('q') || '');
+    } catch {}
+  }, [location.search]);
+
+  const submitSearch = () => {
+    try {
+      const params = new URLSearchParams(location.search);
+      if (query) params.set('q', query);
+      else params.delete('q');
+      navigate({ pathname: location.pathname, search: params.toString() });
+    } catch {}
+  };
+
+  const keyBufferRef = useRef({ lastKey: null, timer: null });
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      const tag = e.target && e.target.tagName ? e.target.tagName.toLowerCase() : '';
+      const isTyping = tag === 'input' || tag === 'textarea' || e.isComposing;
+      if (!isTyping && e.key === '/') {
+        e.preventDefault();
+        if (searchInputRef.current) searchInputRef.current.focus();
+        return;
+      }
+      if (!isTyping) {
+        const kb = keyBufferRef.current;
+        const key = (e.key || '').toLowerCase();
+        if (key === 'g') {
+          if (kb.timer) clearTimeout(kb.timer);
+          kb.lastKey = 'g';
+          kb.timer = setTimeout(() => { kb.lastKey = null; kb.timer = null; }, 800);
+        } else if (key === 'c' && kb.lastKey === 'g') {
+          e.preventDefault();
+          kb.lastKey = null;
+          if (kb.timer) { clearTimeout(kb.timer); kb.timer = null; }
+          navigate('/cart');
+        }
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [navigate]);
+
+  const previewTitle = (() => {
+    if (!cart || cart.length === 0) return "Shopping Bag (empty)";
+    const itemsStr = cart
+      .slice(0, 3)
+      .map(i => `${i.name} × ${i.quantity || 0}`)
+      .join(", ");
+    const extra = cart.length > 3 ? `, +${cart.length - 3} more` : "";
+    return `Shopping Bag • ${cartCount} item${cartCount !== 1 ? 's' : ''} • ${itemsStr}${extra} • Total ${cartTotal.toFixed(2)}`;
+  })();
   return (
     <>
       <div className="header">
@@ -31,7 +97,7 @@ const Header = () => {
           <div className="top-icons">
             <a href="/login" title="Log In"><i className="fas fa-sign-in-alt"></i></a>
             <a href="/signup" title="Sign Up"><i className="fas fa-user-plus"></i></a>
-            <Link to="/cart" title="Shopping Bag">
+            <Link to="/cart" title={previewTitle} aria-label={previewTitle}>
               <i className="fas fa-shopping-bag"></i>
               <span className="cart-count">{cartCount}</span>
               <span className="cart-price"> ${cartTotal.toFixed(2)}</span>
@@ -82,8 +148,16 @@ const Header = () => {
           </ul>
 
           <div className="searchBox">
-            <input className="searchInput" type="text" placeholder="Search" />
-            <button className="searchButton">
+            <input
+              className="searchInput"
+              type="text"
+              placeholder="Search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); submitSearch(); } }}
+              ref={searchInputRef}
+            />
+            <button className="searchButton" type="button" onClick={submitSearch} aria-label="Search">
               <i className="material-icons">search</i>
             </button>
           </div>
